@@ -1,0 +1,512 @@
+/* ==========================================================================
+   1. Reset & Global Styles
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #ff9900; /* لون أمزون المميز */
+  --primary-hover: #e68a00;
+  --bg-dark: #0f172a; /* خلفية داكنة فخمة */
+  --card-bg: #1e293b; /* خلفية الكروت */
+  --text-main: #f8fafc; /* لون النصوص الرئيسية */
+  --text-muted: #94a3b8; /* لون النصوص الفرعية */
+  --accent-red: #ef4444; /* لون الخصومات والتنبيهات */
+  --border-color: rgba(255, 255, 255, 0.08);
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg:
+    0 20px 25px -5px rgba(0, 0, 0, 0.274), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  font-family:
+    "Plus Jakarta Sans",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.5;
+  min-height: 100vh;
+  padding-top: 80px; /* مساحة لـ Navbar الثابت */
+  overflow-x: hidden;
+}
+.show {
+  background: rgb(255, 254, 254);
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
+  z-index: 100;
+}
+
+.overlay-active {
+  opacity: 1;
+  visibility: visible;
+}
+/* ==========================================================================
+   2. Navigation Bar
+   ========================================================================== */
+.dashbard nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  z-index: 1000;
+}
+body.show nav {
+  background-color: #e2e2e3;
+  border-color: rgba(61, 61, 61, 0.905);
+}
+
+.logo img {
+  width: 150px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.links-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.links-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.links-nav a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  position: relative;
+}
+
+.links-nav a:hover {
+  color: var(--primary);
+}
+
+.links-nav ul a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: var(--transition);
+}
+
+.links-nav ul a:hover::after {
+  width: 100%;
+}
+
+/* Buttons in Nav */
+.modal,
+.Salhh,
+#gffdgfd {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.modal {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--border-color);
+}
+
+.modal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.Salhh {
+  background: rgba(255, 153, 0, 0.1);
+  color: var(--primary);
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255, 153, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.Salhh::before {
+  content: "\f07a";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+.Salhh:hover {
+  background: var(--primary);
+  color: #000;
+}
+#cuet {
+  background: var(--accent-red);
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+.menu-btn {
+  border: none;
+  background: transparent;
+  font-size: 25px;
+  cursor: pointer;
+  display: none;
+}
+.menu-btn i {
+  color: var(--primary);
+}
+#sign {
+  background: var(--primary);
+  color: #0f172a;
+  padding: 0.6rem 1.4rem;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 8px;
+  font-weight: 600;
+}
+#sign:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+}
+
+.hero {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -2;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:#e68a004d ;
+  z-index: -1;
+}
+.hero-subtitle {
+  font-size: 0.8rem;
+  letter-spacing: 4px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.hero-title {
+  font-family: "Ballet", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(2.5rem, 5vw, 3.2rem);
+  letter-spacing: -1px;
+  margin: 1rem 0;
+}
+
+.hero-description {
+  color: var(--text-main);
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  font-size: 0.75rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--bg-main);
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   3. Header / Brand Section (.mgama)
+   ========================================================================== */
+.mgama {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  background: linear-gradient(
+    180deg,
+    rgba(30, 41, 59, 0.5) 0%,
+    rgba(15, 23, 42, 0) 100%
+  );
+  margin-bottom: 2rem;
+}
+
+.img-mgama {
+  width: 150px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mgama h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
+  background-clip: text; /* السطر الجديد اللي هيشيل التحذير */
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   4. Products Grid Section
+   ========================================================================== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 0 5% 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  border-color: var(--primary-hover);
+  transform: translateY(-4px);
+}
+
+.product-img-container {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  position: relative;
+  background: #181820;
+}
+
+.product-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-img-container img {
+  transform: scale(1.05);
+}
+
+.product-info {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-category {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+}
+
+.product-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0.3rem 0 0.8rem;
+}
+
+.product-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.product-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.add-cart-btn {
+  background: var(--bg-main);
+  color: var(--primary);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-lg);
+}
+
+.add-cart-btn:hover {
+  background: var(--primary-hover);
+  color: var(--bg-main);
+}
+body.show .product-category,
+body.show .product-title,
+body.show .product-price {
+  color: var(--card-bg);
+}
+body.show .product-card {
+  border: 1px solid var(--card-bg);
+}
+/* ==========================================================================
+   5. Floating Action Button (.Antlk)
+   ========================================================================== */
+.Antlk {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #0f172a;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100px); /* نزلناه تحت الشاشة عشان يختفي */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.Antlk.AntlkShow {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0); /* يطلع لمكانه الطبيعي */
+}
+
+.Antlk:hover {
+  background: #fff;
+  transform: translateY(-4px) scale(1.05);
+}
+body.show .modal {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--card-bg);
+  border: 1px solid var(--card-bg);
+}
+
+/* ==========================================================================
+   6. Responsive Design
+   ========================================================================== */
+@media (max-width: 768px) {
+  .links-nav {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    width: 50%;
+    height: calc(100vh - 80px);
+    background-image: linear-gradient(
+      160deg,
+      #ffaa01fd 0%,
+      rgba(248, 246, 242, 0.294) 100%
+    );
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+    gap: 2rem;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 2rem 1rem;
+    border-radius: 0 20px 20px 0;
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  .links-nav-active {
+    transform: translateX(0);
+    left: 0;
+    opacity: 1;
+  }
+
+  .links-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .links-nav ul li a {
+    color: #eeeded;
+  }
+
+  .dashbard nav {
+    padding: 0 1.5rem;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+  .cards {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 1rem;
+    padding: 0 1.5rem 3rem;
+  }
+
+  .mgama h2 {
+    font-size: 1.8rem;
+  }
+}
