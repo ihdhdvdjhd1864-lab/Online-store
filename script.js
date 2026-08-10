@@ -1,3 +1,12 @@
+// loader
+let loader = document.querySelector("#loader");
+window.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    loader.classList.add("hide");
+  }, 3000);
+})
+
+
 //  محتوي شغل كلووووووووووو
 let cuet = document.querySelector("#cuet");
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
