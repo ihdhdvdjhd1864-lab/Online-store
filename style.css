@@ -572,6 +572,8 @@ body.show .modal {
   background: var(--bg-dark);
   color: var(--text-main);
   border-left: 1px solid var(--border-color);
+     border-radius:  25px 0 0 25px;
+
   box-shadow: var(--shadow-lg);
   z-index: 9999;
   transition: var(--transition);
