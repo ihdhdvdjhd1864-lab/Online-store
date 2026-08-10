@@ -31,9 +31,11 @@
         <button class="Salhh">
           <span id="cuet">0</span>
         </button>
+
         <button class="menu-btn">
           <i id="bars" class="fa-solid fa-bars"></i>
         </button>
+
         <div class="links-nav">
           <ul>
             <li><a href="#">Home</a></li>
@@ -42,7 +44,9 @@
             <li><a href="#">About</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">Contact</a></li>
-            <button class="modal"></button>
+            <li>
+              <button class="modal"></button>
+            </li>
           </ul>
 
           <div class="actions">
@@ -50,6 +54,26 @@
           </div>
         </div>
       </nav>
+
+      <div class="cart">
+        <div class="cart-header">
+          <div class="cart-title">
+            <h2>Your Cart</h2>
+            <i class="fa-solid fa-bag-shopping"></i>
+          </div>
+          <button class="close-cart">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="cart-items"></div>
+        <div class="cart-footer">
+          <span class="cart-total">Total: $0</span>
+          <button class="checkout-btn">Checkout</button>
+        </div>
+      </div>
+
+      <div class="cart-overlay"></div>
+
       <div class="overlay"></div>
 
       <section class="hero">
@@ -79,7 +103,26 @@
           />
           <h2>PRIME CUTS</h2>
         </div>
+        <!-- Filter & Category Section -->
+        <section class="products-section" id="products">
+          <div class="section-header">
+            <h2>CURATED SELECTION</h2>
+            <input type="text" id="searchInput" placeholder="Search items..." />
 
+            <div class="filter-buttons">
+              <button class="filter-btn active" data-category="all">All</button>
+              <button class="filter-btn" data-category="hoodies">
+                Hoodies
+              </button>
+              <button class="filter-btn" data-category="watches">
+                Watches
+              </button>
+              <button class="filter-btn" data-category="footwear">
+                Footwear
+              </button>
+            </div>
+          </div>
+        </section>
         <div class="cards"></div>
       </main>
     </div>
