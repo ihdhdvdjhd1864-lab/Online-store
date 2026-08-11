@@ -20,15 +20,21 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-        <div id="loader">
+    <!-- Loader -->
+    <div id="loader">
       <div class="loader-content">
-        <img src="img/Gemini_Generated_Image_61bho61bho61bho6 (1).png" class="loader-logo" />
+        <img
+          src="img/Gemini_Generated_Image_61bho61bho61bho6 (1).png"
+          class="loader-logo"
+        />
         <h2>PRIME<span>CUTS</span></h2>
         <div class="spinner"></div>
-        <p>.....جاري تحميل البيانات </p>
+        <p>.....جاري تحميل البيانات</p>
       </div>
     </div>
+    <!-- محتوي الصفحة -->
     <div class="dashbard">
+      <!-- القائمة -->
       <nav>
         <div class="logo">
           <img
@@ -39,6 +45,10 @@
         <button class="Salhh">
           <span id="cuet">0</span>
         </button>
+        <button class="favorites-btn">
+          <i class="fa-regular fa-heart"></i>
+          <span class="favorites-count">0</span>
+        </button>
 
         <button class="menu-btn">
           <i id="bars" class="fa-solid fa-bars"></i>
@@ -46,8 +56,8 @@
 
         <div class="links-nav">
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">profucts</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">profucts</a></li>
             <li><a href="#">categories</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Services</a></li>
@@ -56,35 +66,13 @@
               <button class="modal"></button>
             </li>
           </ul>
-
           <div class="actions">
             <a id="sign" href="#">Sign Up</a>
           </div>
         </div>
       </nav>
-
-      <div class="cart">
-        <div class="cart-header">
-          <div class="cart-title">
-            <h2>Your Cart</h2>
-            <i class="fa-solid fa-bag-shopping"></i>
-          </div>
-          <button class="close-cart">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-        <div class="cart-items"></div>
-        <div class="cart-footer">
-          <span class="cart-total">Total: $0</span>
-          <button class="checkout-btn">Checkout</button>
-        </div>
-      </div>
-
-      <div class="cart-overlay"></div>
-
-      <div class="overlay"></div>
-
-      <section class="hero">
+      <!-- فديو الصفحة -->
+      <section class="hero" id="home">
         <video autoplay muted loop playsinline class="hero-video">
           <source
             src="video/8718441-uhd_4096_2160_25fps.mp4"
@@ -101,7 +89,7 @@
           <a href="#products" class="btn-primary">Explore Collection</a>
         </div>
       </section>
-
+      <!-- تبع الي صفحه بحث و ازار -->
       <main>
         <div class="mgama">
           <img
@@ -111,12 +99,10 @@
           />
           <h2>PRIME CUTS</h2>
         </div>
-        <!-- Filter & Category Section -->
         <section class="products-section" id="products">
           <div class="section-header">
             <h2>CURATED SELECTION</h2>
             <input type="text" id="searchInput" placeholder="Search items..." />
-
             <div class="filter-buttons">
               <button class="filter-btn active" data-category="all">All</button>
               <button class="filter-btn" data-category="hoodies">
@@ -133,8 +119,77 @@
         </section>
         <div class="cards"></div>
       </main>
+      <!-- المنتجات اصلا -->
+      <section class="products-section">
+        <!-- Products -->
+        <div class="cards"></div>
+      </section>
+      <!-- السله -->
+      <div class="cart">
+        <div class="cart-header">
+          <div class="cart-title">
+            <h2>Your Cart</h2>
+            <i class="fa-solid fa-bag-shopping"></i>
+          </div>
+          <button class="close-cart">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="cart-items"></div>
+        <div class="cart-footer">
+          <span class="cart-total">Total: $0</span>
+          <button class="checkout-btn">Checkout</button>
+        </div>
+      </div>
+      <!-- المنتجات المفضله -->
+      <section class="favorites">
+        <div class="favorites-header">
+          <h2>
+            <i class="fa-solid fa-heart"></i>
+            My Favorites
+          </h2>
+        </div>
+        <div class="favorites-items"></div>
+      </section>
+      <!-- ضابابيه -->
+      <div class="overlay"></div>
     </div>
+    <!-- محتوي  التفاصيل المنتج -->
+    <div class="product-details">
+      <div class="details-content">
+        <button class="close-details">×</button>
+        <div class="details-image-box">
+          <img class="details-image" src="" alt="" />
+        </div>
+        <div class="details-info">
+          <span class="details-category"></span>
+          <h2 class="details-title"></h2>
+          <p class="details-description"></p>
+
+          <div class="details-bottom">
+            <span class="details-price"></span>
+            <button class="details-add">
+              <i class="fa-solid fa-cart-shopping"></i>
+              Add To Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- زرار العوده -->
     <button class="Antlk"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <!-- رساله التأكيد دفع -->
+    <div class="toast" id="toast">
+      <i class="fa-solid fa-circle-check"></i>
+      <span>Product added to cart!</span>
+    </div>
+<!-- رساله المفضله -->
+    <div class="toast" id="toast2">
+      <i class="fa-solid fa-heart"></i>
+      <span>Product added to favorites!</span>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>

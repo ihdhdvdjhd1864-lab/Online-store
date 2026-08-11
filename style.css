@@ -75,6 +75,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 5%;
+
   z-index: 1000;
 }
 body.show nav {
@@ -143,6 +144,57 @@ body.show .logo > img {
   font-weight: 600;
   transition: var(--transition);
 }
+.favorites-btn {
+  position: relative;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+
+  background: rgba(239, 68, 68, 0.08);
+  color: #ef4444;
+
+  font-size: 20px;
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.favorites-btn:hover {
+  background: #ef4444;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* رقم عدد المفضلة */
+.favorites-btn .favorites-count {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+
+  min-width: 20px;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2px 5px;
+
+  background: var(--primary);
+  color: #111827;
+
+  border-radius: 50%;
+
+  font-size: 11px;
+  font-weight: 800;
+}
 
 .modal {
   background: rgba(255, 255, 255, 0.05);
@@ -195,7 +247,7 @@ body.show .logo > img {
 #sign {
   background: var(--primary);
   color: #0f172a;
-  padding: 0.6rem 1.4rem;
+  padding: 0.3rem 1rem;
   text-decoration: none;
   display: inline-block;
   border-radius: 8px;
@@ -409,7 +461,9 @@ body.show .img-mgama {
   font-weight: 700;
 }
 
-.add-cart-btn {
+.add-cart-btn,
+.details-btn,
+.favorite-btn {
   background: var(--bg-main);
   color: var(--primary);
   border: 1px solid var(--border-color);
@@ -421,7 +475,9 @@ body.show .img-mgama {
   box-shadow: var(--shadow-lg);
 }
 
-.add-cart-btn:hover {
+.add-cart-btn:hover,
+.details-btn:hover,
+.favorite-btn:hover {
   background: var(--primary-hover);
   color: var(--bg-main);
 }
@@ -949,6 +1005,344 @@ body.show .cart-item h3 {
   visibility: hidden;
   pointer-events: none; /* عشان ما يمنعش الضغط على أي حاجة وراه */
 }
+.product-details {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: 0.3s ease;
+  z-index: 10000;
+}
+
+.product-details.show-details {
+  opacity: 1;
+  visibility: visible;
+}
+
+.details-content {
+  position: relative;
+
+  width: 90%;
+  max-width: 850px;
+  min-height: 450px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  overflow: hidden;
+
+  background: var(--bg-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 25px;
+
+  box-shadow: var(--shadow-lg);
+
+  animation: detailsShow 0.35s ease;
+}
+
+@keyframes detailsShow {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* الصورة */
+.details-image-box {
+  width: 100%;
+  height: 100%;
+  min-height: 450px;
+  background: #f1f5f9;
+  overflow: hidden;
+}
+
+.details-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+
+  object-fit: cover;
+  border-radius: 0;
+
+  transition: transform 0.5s ease;
+}
+
+.details-image:hover {
+  transform: scale(1.04);
+}
+
+/* المعلومات */
+.details-info {
+  padding: 55px 40px 35px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.details-category {
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.details-title {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: var(--text-main);
+}
+
+.details-description {
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+
+.details-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: auto;
+}
+
+.details-price {
+  color: var(--primary);
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.details-add {
+  border: none;
+  padding: 13px 20px;
+
+  border-radius: 10px;
+
+  background: var(--primary);
+  color: #111827;
+
+  font-weight: 800;
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.details-add:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+/* زر X */
+.close-details {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  width: 40px;
+  height: 40px;
+
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.8);
+  color: #111827;
+
+  font-size: 24px;
+  cursor: pointer;
+
+  z-index: 5;
+
+  transition: var(--transition);
+}
+
+.close-details:hover {
+  background: var(--primary);
+  transform: rotate(90deg);
+}
+
+.toast {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 20px;
+  background: #ffffff;
+  color: #0f172a;
+  border-left: 4px solid var(--primary);
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  font-size: 14px;
+  font-weight: 700;
+  transform: translateX(150%);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.4s ease;
+  z-index: 999999;
+}
+
+.toast i {
+  color: #22c55e;
+  font-size: 20px;
+}
+
+.toast.show-toast {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+#toast2 i {
+  color: #ef4444;
+  font-size: 20px;
+}
+/* ================================
+   ❤️ FAVORITES SIDEBAR
+================================ */
+
+.favorites {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 400px;
+  max-width: 90%;
+  height: 100vh;
+
+  background: var(--bg-dark);
+  color: var(--text-main);
+
+  z-index: 9999;
+
+  padding: 25px;
+
+  border-left: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+
+  transition: var(--transition);
+
+  overflow-y: auto;
+}
+
+/* لما تفتح */
+.favorites.show-favorites {
+  right: 0;
+}
+
+/* Header */
+.favorites-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 20px;
+  margin-bottom: 15px;
+
+  border-bottom: 1px solid var(--border-color);
+}
+
+.favorites-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 20px;
+}
+
+.favorites-header h2 i {
+  color: #ef4444;
+}
+
+/* المنتجات */
+.favorites-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Favorite Item */
+.favorite-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 12px;
+
+  background: var(--card-bg);
+
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+
+  transition: var(--transition);
+}
+
+.favorite-item:hover {
+  transform: translateX(-4px);
+  border-color: var(--primary);
+}
+
+/* صورة المنتج */
+.favorite-item img {
+  width: 60px;
+  height: 60px;
+
+  object-fit: cover;
+
+  border-radius: 10px;
+}
+
+/* بيانات المنتج */
+.favorite-item > div {
+  flex: 1;
+}
+
+.favorite-item h3 {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.favorite-item p {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* زر الحذف */
+.remove-favorite {
+  width: 35px;
+  height: 35px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.remove-favorite:hover {
+  background: #ef4444;
+  color: white;
+}
+
 /* ==========================================================================
    6. Responsive Design
    ========================================================================== */
@@ -1039,5 +1433,34 @@ body.show .cart-item h3 {
 
   .cart-item h3 {
     font-size: 14px;
+  }
+  .details-content {
+    width: 92%;
+    max-height: 90vh;
+
+    grid-template-columns: 1fr;
+
+    overflow-y: auto;
+  }
+
+  .details-image-box {
+    height: 280px;
+    min-height: 280px;
+  }
+
+  .details-info {
+    padding: 25px;
+  }
+
+  .details-title {
+    font-size: 1.5rem;
+  }
+
+  .details-bottom {
+    margin-top: 10px;
+  }
+  .favorites {
+    width: 85%;
+    max-width: 100%;
   }
 }
