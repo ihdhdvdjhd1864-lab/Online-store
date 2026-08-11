@@ -81,13 +81,14 @@ body::-webkit-scrollbar {
 
   z-index: 1000;
 }
+
 body.show nav {
   background-color: #e2e2e3;
   border-color: rgba(61, 61, 61, 0.905);
 }
 
 .logo > img {
-  width: 150px;
+  width: 180px;
   height: 100%;
   object-fit: cover;
   filter: invert(1);
@@ -368,8 +369,8 @@ body.show .hero::before {
 }
 
 .mgama .img-mgama {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+
   object-fit: cover;
   filter: invert(1);
 }
@@ -935,9 +936,9 @@ body.show .cart-item h3 {
 
 /* الأيقونية الطبية */
 .loader-logo {
-  max-width: 150px; /* التحكم في أقصى عرض للوجو */
+  max-width: 200px; /* التحكم في أقصى عرض للوجو */
   height: auto; /* الحفاظ على أبعاد الوجو */
-  margin-bottom: 20px; /* مسافة أسفل الوجو */
+  margin-bottom: 10px; /* مسافة أسفل الوجو */
   display: block; /* ضمان توسط الوجو */
   margin-left: auto;
   margin-right: auto;
@@ -1389,6 +1390,10 @@ body.show .cart-item h3 {
 
   .dashbard nav {
     padding: 1rem;
+  }
+
+  .logo img{
+    width: 150px;
   }
 
   .menu-btn {

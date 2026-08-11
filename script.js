@@ -81,14 +81,12 @@ butMenu.addEventListener("click", () => {
     overlay.classList.remove("overlay-active");
   }
 });
-
 linksnav.addEventListener("click", () => {
   linksnav.classList.remove("links-nav-active");
   bars.classList.remove("fa-xmark");
   bars.classList.add("fa-bars");
   overlay.classList.remove("overlay-active");
 })
-
 overlay.addEventListener("click", () => {
   linksnav.classList.remove("links-nav-active");
   bars.classList.remove("fa-xmark");
