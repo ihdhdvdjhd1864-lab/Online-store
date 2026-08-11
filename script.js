@@ -151,14 +151,20 @@ function renderProducts(products) {
 
   // رسساله  بسيطه 🎉
   let toast = document.querySelector("#toast");
+  let toastSound = document.querySelector("#toastSound");
   function showToast() {
+    toastSound.currentTime = 0;
+    toastSound.play();
     toast.classList.add("show-toast");
     setTimeout(() => {
       toast.classList.remove("show-toast");
     }, 2500);
   }
+
   let toast2 = document.querySelector("#toast2");
   function showToast2() {
+    toastSound.currentTime = 0;
+    toastSound.play();
     toast2.classList.add("show-toast");
     setTimeout(() => {
       toast2.classList.remove("show-toast");
