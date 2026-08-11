@@ -37,6 +37,9 @@ body {
   padding-top: 80px; /* مساحة لـ Navbar الثابت */
   overflow-x: hidden;
 }
+body::-webkit-scrollbar {
+  display: none;
+}
 .show {
   background: rgb(255, 254, 254);
 }
