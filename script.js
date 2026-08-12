@@ -437,14 +437,14 @@ function updateCartTotal() {
 let checkoutBtn = document.querySelector(".checkout-btn");
 checkoutBtn.addEventListener("click", () => {
   if (cart.length === 0) {
-    setTimeout(() => {
+ 
       cartItems.innerHTML = `
       <div class="cart-item-success">
         <i class="fa-solid fa-circle-exclamation"></i>
         <h3>Your cart is empty!</h3>
       </div>
     `;
-    }, 2000);
+  
     return;
   }  let finalTotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -455,13 +455,15 @@ checkoutBtn.addEventListener("click", () => {
   updateCartCount();
   updateCartTotal();
   // 4. عرض الرسالة بالمتغير الجديد finalTotal
-  cartItems.innerHTML = `
+  setTimeout(() => {
+    cartItems.innerHTML = `
     <div class="cart-item-success" >
       <i class="fa-solid fa-circle-check"></i>
       <h3>Order placed successfully!</h3>
       <p>Total Paid: <strong>$${finalTotal.toFixed(2)}</strong></p>
     </div>
   `;
+  });
 });
 // ################################################################################
 // ################################################################################
