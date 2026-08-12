@@ -214,7 +214,6 @@ let favoritesItems = document.querySelector(".favorites-items");
 function renderFavorites() {
   if (favorites.length === 0) {
     favoritesItems.innerHTML = `<p class="favorites-empty">Your favorites are empty</p>`;
-    updateCartTotal();
     return;
   }
   favoritesItems.innerHTML = favorites
@@ -266,6 +265,7 @@ function addToFavorites(id) {
 
 renderFavorites();
 updateFavoritesCount();
+setupRemoveFavorites();
 let closeFavorites = document.querySelector(".close-favorites");
 closeFavorites.addEventListener("click", () => {
   favoritesBox.classList.remove("show-favorites");
@@ -326,6 +326,7 @@ function addToCart(id) {
 }
 //عدد المنتجات في السلة
 let cuet = document.querySelector("#cuet");
+
 function updateCartCount() {
   let total = cart.reduce((total, item) => {
     return total + item.quantity;
