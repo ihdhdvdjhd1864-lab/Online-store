@@ -437,16 +437,21 @@ function updateCartTotal() {
 let checkoutBtn = document.querySelector(".checkout-btn");
 checkoutBtn.addEventListener("click", () => {
   if (cart.length === 0) {
- 
-      cartItems.innerHTML = `
+    cartItems.innerHTML = `
       <div class="cart-item-success">
         <i class="fa-solid fa-circle-exclamation"></i>
         <h3>Your cart is empty!</h3>
       </div>
     `;
-  
+    let cartItemSuccess = document.querySelector(".cart-item-success");
+    setTimeout(() => {
+      cartItemSuccess.style.display = "none";
+      cartItems.innerHTML = `<p class="cart-empty">Your cart is currently empty</p>`;
+    }, 2000);
     return;
-  }  let finalTotal = cart.reduce(
+  }
+
+  let finalTotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
@@ -455,15 +460,18 @@ checkoutBtn.addEventListener("click", () => {
   updateCartCount();
   updateCartTotal();
   // 4. عرض الرسالة بالمتغير الجديد finalTotal
-  setTimeout(() => {
-    cartItems.innerHTML = `
+  cartItems.innerHTML = `
     <div class="cart-item-success" >
       <i class="fa-solid fa-circle-check"></i>
       <h3>Order placed successfully!</h3>
       <p>Total Paid: <strong>$${finalTotal.toFixed(2)}</strong></p>
     </div>
   `;
-  },2000);
+  let cartItemSuccess = document.querySelector(".cart-item-success");
+  setTimeout(() => {
+    cartItemSuccess.style.display = "none";
+    cartItems.innerHTML = `<p class="cart-empty">Your cart is currently empty</p>`;
+  }, 2000);
 });
 // ################################################################################
 // ################################################################################

@@ -1275,6 +1275,9 @@ body.show .favorites h2 {
   margin-bottom: 15px;
   border-bottom: 1px solid var(--border-color);
 }
+body.show .favorites-header {
+  border-color: var(--card-bg);
+}
 
 .favorites-header h2 {
   display: flex;
@@ -1311,7 +1314,8 @@ body.show .favorites h2 {
   transition: var(--transition);
 }
 body.show .favorite-item {
-  background: #0f172a9a;
+  background: var(--card-bg);
+  border-color: var(--border-color);
 }
 
 .favorite-item:hover {
@@ -1411,6 +1415,8 @@ body.show .favorite-item {
   border: 1px dashed #444;
   border-radius: 12px;
   box-sizing: border-box;
+  animation: all 0.8s ease-in-out;
+  
 }
 .no-results {
   width: 100%;
