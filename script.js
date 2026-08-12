@@ -22,9 +22,9 @@ window.addEventListener("DOMContentLoaded", () => {
     loader.classList.add("hide");
   }, 3000);
 });
-
-//  محتوي شغل كلووووووووووو
+// تخزين السله
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+// تخزين المفضله
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 //  ليل و نهار
@@ -81,18 +81,16 @@ butMenu.addEventListener("click", () => {
     overlay.classList.remove("overlay-active");
   }
 });
-linksnav.addEventListener("click", () => {
-  linksnav.classList.remove("links-nav-active");
-  bars.classList.remove("fa-xmark");
-  bars.classList.add("fa-bars");
-  overlay.classList.remove("overlay-active");
-})
-overlay.addEventListener("click", () => {
-  linksnav.classList.remove("links-nav-active");
-  bars.classList.remove("fa-xmark");
-  bars.classList.add("fa-bars");
-  overlay.classList.remove("overlay-active");
+let arrbut = [linksnav, overlay];
+arrbut.forEach((item) => {
+  item.addEventListener("click", () => {
+    linksnav.classList.remove("links-nav-active");
+    bars.classList.remove("fa-xmark");
+    bars.classList.add("fa-bars");
+    overlay.classList.remove("overlay-active");
+  });
 });
+
 // راقب العناصر
 
 let showCarats = new IntersectionObserver(
@@ -155,28 +153,6 @@ function renderProducts(products) {
 
   observeCards();
 
-  // رسساله  بسيطه 🎉
-  let toast = document.querySelector("#toast");
-  let toastSound = document.querySelector("#toastSound");
-  function showToast() {
-    toastSound.currentTime = 0;
-    toastSound.play();
-    toast.classList.add("show-toast");
-    setTimeout(() => {
-      toast.classList.remove("show-toast");
-    }, 2500);
-  }
-
-  let toast2 = document.querySelector("#toast2");
-  function showToast2() {
-    toastSound.currentTime = 0;
-    toastSound.play();
-    toast2.classList.add("show-toast");
-    setTimeout(() => {
-      toast2.classList.remove("show-toast");
-    }, 2500);
-  }
-
   // addCart
   let addButtons = document.querySelectorAll(".add-cart-btn");
   addButtons.forEach((button) => {
@@ -202,6 +178,7 @@ function renderProducts(products) {
       overlay.classList.add("overlay-active");
     });
   });
+
   // addFavorite
   let favoriteButtons = document.querySelectorAll(".favorite-btn");
   favoriteButtons.forEach((button) => {
@@ -212,8 +189,34 @@ function renderProducts(products) {
     });
   });
 }
+// رسساله  بسيطه 🎉
+let toast = document.querySelector("#toast");
+let toastSound = document.querySelector("#toastSound");
+function showToast() {
+  toastSound.currentTime = 0;
+  toastSound.play();
+  toast.classList.add("show-toast");
+  setTimeout(() => {
+    toast.classList.remove("show-toast");
+  }, 2500);
+}
+
+let toast2 = document.querySelector("#toast2");
+function showToast2() {
+  toastSound.currentTime = 0;
+  toastSound.play();
+  toast2.classList.add("show-toast");
+  setTimeout(() => {
+    toast2.classList.remove("show-toast");
+  }, 2500);
+}
 let favoritesItems = document.querySelector(".favorites-items");
 function renderFavorites() {
+  if (favorites.length === 0) {
+    favoritesItems.innerHTML = `<p class="favorites-empty">Your favorites are empty</p>`;
+    updateCartTotal();
+    return;
+  }
   favoritesItems.innerHTML = favorites
     .map((item) => {
       return `
@@ -260,9 +263,14 @@ function addToFavorites(id) {
   updateFavoritesCount();
   setupRemoveFavorites();
 }
+
 renderFavorites();
 updateFavoritesCount();
-
+let closeFavorites = document.querySelector(".close-favorites");
+closeFavorites.addEventListener("click", () => {
+  favoritesBox.classList.remove("show-favorites");
+  overlay.classList.remove("overlay-active");
+});
 closeDetails.addEventListener("click", () => {
   productDetails.classList.remove("show-details");
   overlay.classList.remove("overlay-active");
@@ -270,9 +278,12 @@ closeDetails.addEventListener("click", () => {
 detailsAdd.addEventListener("click", () => {
   let id = detailsAdd.dataset.id;
   addToCart(id);
+
   productDetails.classList.remove("show-details");
   overlay.classList.remove("overlay-active");
+  showToast();
 });
+
 let favoritesBtn = document.querySelector(".favorites-btn");
 let favoritesBox = document.querySelector(".favorites");
 favoritesBtn.addEventListener("click", () => {
@@ -282,6 +293,8 @@ favoritesBtn.addEventListener("click", () => {
 window.addEventListener("click", (event) => {
   if (event.target == overlay) {
     favoritesBox.classList.remove("show-favorites");
+    overlay.classList.remove("overlay-active");
+    cartBox.classList.remove("show-cart");
     overlay.classList.remove("overlay-active");
   }
 });
@@ -338,14 +351,15 @@ closeCart.addEventListener("click", () => {
   cartBox.classList.remove("show-cart");
   overlay.classList.remove("overlay-active");
 });
-window.addEventListener("click", (event) => {
-  if (event.target === overlay) {
-    cartBox.classList.remove("show-cart");
-    overlay.classList.remove("overlay-active");
-  }
-});
+
 // عرض منتجات السلة
 function renderCart() {
+  if (cart.length === 0) {
+    cartItems.innerHTML = `<p class="cart-empty">Your cart is currently empty</p>`;
+    updateCartTotal();
+    return;
+  }
+
   cartItems.innerHTML = cart
     .map((item) => {
       return `
@@ -423,9 +437,9 @@ let checkoutBtn = document.querySelector(".checkout-btn");
 checkoutBtn.addEventListener("click", () => {
   if (cart.length === 0) {
     cartItems.innerHTML = `
-      <div class="cart-item-success" style="text-align: center; padding: 20px;">
-        <i class="fa-solid fa-circle-exclamation" style="color: #ef4444; font-size: 2rem; margin-bottom: 10px;"></i>
-        <h3 style="margin: 0;">Your cart is empty!</h3>
+      <div class="cart-item-success">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <h3>Your cart is empty!</h3>
       </div>
     `;
     return;
@@ -440,10 +454,10 @@ checkoutBtn.addEventListener("click", () => {
   updateCartTotal();
   // 4. عرض الرسالة بالمتغير الجديد finalTotal
   cartItems.innerHTML = `
-    <div class="cart-item-success" style="text-align: center; padding: 20px;">
-      <i class="fa-solid fa-circle-check" style="color: #22c55e; font-size: 2.5rem; margin-bottom: 10px;"></i>
-      <h3 style="margin: 0 0 8px 0;">Order placed successfully!</h3>
-      <p style="margin: 0; color: #64748b;">Total Paid: <strong>$${finalTotal.toFixed(2)}</strong></p>
+    <div class="cart-item-success" >
+      <i class="fa-solid fa-circle-check"></i>
+      <h3>Order placed successfully!</h3>
+      <p>Total Paid: <strong>$${finalTotal.toFixed(2)}</strong></p>
     </div>
   `;
 });
@@ -471,21 +485,22 @@ searchInput.addEventListener(
   "input",
   searchNew(() => {
     let searchInputValue = searchInput.value.toLowerCase();
-
     let filteredData = data.filter((product) => {
       return product.title.toLowerCase().includes(searchInputValue);
     });
+    if (filteredData.length === 0) {
+      cards.innerHTML = `<p class="no-results">No products found</p>`;
+      return;
+    }
     cards.innerHTML = "";
     renderProducts(filteredData);
   }, 500),
 );
-
 let filterButtons = document.querySelectorAll(".filter-btn");
 filterButtons.forEach((button) => {
   let category = button.dataset.category;
   button.addEventListener("click", () => {
     let filteredData;
-
     if (category === "all") {
       filteredData = data;
     } else {
@@ -493,7 +508,6 @@ filterButtons.forEach((button) => {
         return product.category === category;
       });
     }
-
     cards.innerHTML = "";
     renderProducts(filteredData);
   });
