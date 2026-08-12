@@ -437,15 +437,16 @@ function updateCartTotal() {
 let checkoutBtn = document.querySelector(".checkout-btn");
 checkoutBtn.addEventListener("click", () => {
   if (cart.length === 0) {
-    cartItems.innerHTML = `
+    setTimeout(() => {
+      cartItems.innerHTML = `
       <div class="cart-item-success">
         <i class="fa-solid fa-circle-exclamation"></i>
         <h3>Your cart is empty!</h3>
       </div>
     `;
+    }, 2000);
     return;
-  }
-  let finalTotal = cart.reduce(
+  }  let finalTotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
