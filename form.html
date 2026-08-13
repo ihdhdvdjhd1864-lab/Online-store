@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="PRIME MARKET" />
+    <meta
+      property="og:description"
+      content="Discover premium style with PRIME MARKET."
+    />
+    <meta
+      property="og:image"
+      content="https://online-store-teal-chi.vercel.app/img/logo-navbar.png"
+    />
+    <meta
+      property="og:url"
+      content="https://online-store-teal-chi.vercel.app/"
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PRIME MARKET" />
+    <meta
+      name="twitter:description"
+      content="Discover premium style with PRIME MARKET."
+    />
+    <meta
+      name="twitter:image"
+      content="https://online-store-teal-chi.vercel.app/img/logo-navbar.png"
+    />
+    <title>PRIME MARKET</title>
+    <link rel="icon" href="img/logo-navbar.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style-form.css" />
+  </head>
+  <body>
+    <!-- ================================ CHECKOUT MODAL ================================ -->
+    <div class="checkout-modal">
+      <div class="checkout-box">
+        <button class="close-checkout">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="checkout-heading">
+          <div class="checkout-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+
+          <h2>Complete Your Order</h2>
+          <p>Enter your information to receive your order.</p>
+        </div>
+
+        <form id="checkoutForm" >
+          <div class="form-group">
+            <label for="customerName">Full Name</label>
+            <div class="input-box">
+              <i class="fa-regular fa-user"></i>
+              <input
+                type="text"
+                id="customerName"
+                placeholder="Enter your full name"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="customerPhone">Phone Number</label>
+              <div class="input-box">
+                <i class="fa-solid fa-phone"></i>
+                <input
+                  type="tel"
+                  id="customerPhone"
+                  placeholder="01xxxxxxxxx"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="customerCity">City</label>
+              <div class="input-box">
+                <i class="fa-solid fa-city"></i>
+                <input
+                  type="text"
+                  id="customerCity"
+                  placeholder="Alexandria"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="customerAddress">Full Address</label>
+            <div class="input-box textarea-box">
+              <i class="fa-solid fa-location-dot"></i>
+              <textarea
+                id="customerAddress"
+                placeholder="Street, building, apartment..."
+                required
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="customerNotes">
+              Order Notes <span>(Optional)</span>
+            </label>
+
+            <div class="input-box textarea-box">
+              <i class="fa-regular fa-note-sticky"></i>
+              <textarea
+                id="customerNotes"
+                placeholder="Any special instructions..."
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="checkout-summary">
+            <span>Order Total</span>
+            <strong id="checkoutTotal">$0</strong>
+          </div>
+
+          <button type="submit" class="confirm-order">
+            <span>Confirm Order</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- رساله نجاح  الطلب  -->
+    <div class="success-message" id="successMessage">
+      <div class="success-icon">
+        <i class="fa-solid fa-check"></i>
+      </div>
+
+      <span class="success-label">ORDER CONFIRMED</span>
+
+      <h2>Thank You, <strong id="successName">Customer</strong>! <i class="fa-solid fa-circle-check"></i></h2>
+
+      <p>
+        Your order has been successfully placed. We’re getting everything ready
+        for you.
+      </p>
+
+      <div class="order-details">
+        <div class="order-detail">
+          <span>
+            <i class="fa-solid fa-box"></i>
+            Items
+          </span>
+
+          <strong id="orderItems">0 Items</strong>
+        </div>
+
+        <div class="order-detail">
+          <span>
+            <i class="fa-solid fa-receipt"></i>
+            Total
+          </span>
+
+          <strong id="orderTotal">$0.00</strong>
+        </div>
+      </div>
+
+      <div class="success-footer">
+        <i class="fa-solid fa-truck-fast"></i>
+
+        <span> Your order is now being prepared. </span>
+      </div>
+    </div>
+    <script src="form-scrabt.js"></script>
+  </body>
+</html>
