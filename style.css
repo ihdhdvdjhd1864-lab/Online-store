@@ -362,6 +362,7 @@ body.show .hero::before {
   align-items: center;
   justify-content: center;
   gap: 1rem;
+    padding: 1.5rem 0;
   background: linear-gradient(
     180deg,
     rgba(30, 41, 59, 0.5) 0%,
