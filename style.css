@@ -295,11 +295,11 @@ body.show .links-nav a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #0f172a6c;
+  background: rgba(15, 23, 42, 0.441);
   z-index: -1;
 }
 body.show .hero::before {
-  background: #8f8f8f30;
+  background: hsla(0, 0%, 56%, 0.444);
 }
 .hero-subtitle {
   font-size: 0.8rem;
@@ -362,7 +362,6 @@ body.show .hero::before {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  padding: 1rem 0;
   background: linear-gradient(
     180deg,
     rgba(30, 41, 59, 0.5) 0%,
@@ -498,14 +497,24 @@ body.show .product-card {
 }
 
 .products-section {
-  padding: 5rem 4rem;
+  padding: 1rem 4rem;
+}
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .section-header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 3rem;
+
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .section-header h2 {
@@ -942,7 +951,7 @@ body.show .cart-item h3 {
 
 /* الأيقونية الطبية */
 .loader-logo {
-  max-width: 200px; /* التحكم في أقصى عرض للوجو */
+  max-width: 100px; /* التحكم في أقصى عرض للوجو */
   height: auto; /* الحفاظ على أبعاد الوجو */
   margin-bottom: 10px; /* مسافة أسفل الوجو */
   display: block; /* ضمان توسط الوجو */
@@ -1416,7 +1425,6 @@ body.show .favorite-item {
   border-radius: 12px;
   box-sizing: border-box;
   animation: all 0.8s ease-in-out;
-  
 }
 .no-results {
   width: 100%;
@@ -1469,6 +1477,239 @@ body.show .moving-text {
     transform: translateX(-50%);
   }
 }
+.details-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.details-favorite {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: transparent;
+  color: #ef4444;
+  font-size: 20px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.details-favorite:hover {
+  background: #ef4444;
+  color: white;
+  transform: translateY(-2px);
+}
+
+
+
+/* =========================================
+   PREMIUM SUCCESS MESSAGE
+========================================= */
+
+.success-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 999999;
+
+  width: min(92%, 440px);
+
+  padding: 34px 30px;
+
+  text-align: center;
+
+  background: #0f172a;
+
+  border: 1px solid rgba(255, 153, 0, 0.18);
+  border-radius: 26px;
+
+  box-shadow:
+    0 35px 90px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.03);
+
+  transform: translate(-50%, -45%) scale(0.92);
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    visibility 0.35s ease;
+}
+
+.success-message.show {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translate(-50%, -50%) scale(1);
+}
+
+
+/* SUCCESS ICON */
+
+.success-icon {
+  width: 72px;
+  height: 72px;
+
+  display: grid;
+  place-items: center;
+
+  margin: 0 auto 18px;
+
+  border-radius: 50%;
+
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+
+  color: #22c55e;
+
+  font-size: 28px;
+
+  box-shadow: 0 0 35px rgba(34, 197, 94, 0.08);
+}
+
+
+/* LABEL */
+
+.success-label {
+  display: inline-block;
+
+  margin-bottom: 10px;
+
+  color: #ff9900;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+
+/* TITLE */
+
+.success-message h2 {
+  margin: 0 0 10px;
+
+  color: #f8fafc;
+
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+.success-message h2 strong {
+  color: #ff9900;
+}
+
+
+/* DESCRIPTION */
+
+.success-message > p {
+  max-width: 350px;
+
+  margin: 0 auto 22px;
+
+  color: #94a3b8;
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+/* ORDER DETAILS */
+
+.order-details {
+  overflow: hidden;
+
+  margin-bottom: 18px;
+
+  background: #1e293b;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  border-radius: 15px;
+}
+
+
+/* EACH DETAIL */
+
+.order-detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 14px 16px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.order-detail:last-child {
+  border-bottom: none;
+}
+
+
+/* LEFT SIDE */
+
+.order-detail span {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  color: #94a3b8;
+
+  font-size: 12px;
+}
+
+.order-detail span i {
+  width: 18px;
+
+  color: #ff9900;
+
+  text-align: center;
+}
+
+
+/* RIGHT SIDE */
+
+.order-detail strong {
+  color: #f8fafc;
+
+  font-size: 12px;
+}
+
+#orderNumber {
+  color: #ff9900;
+}
+
+#orderTotal {
+  font-size: 14px;
+}
+
+
+/* FOOTER */
+
+.success-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  padding-top: 4px;
+
+  color: #64748b;
+
+  font-size: 11px;
+}
+
+.success-footer i {
+  color: #ff9900;
+  font-size: 14px;
+}
+
+
+/* MOBILE */
+
+
 /* ==========================================================================
    6. Responsive Design
    ========================================================================== */
@@ -1533,7 +1774,10 @@ body.show .moving-text {
   }
 
   .mgama h2 {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
+  }
+  .mgama .img-mgama {
+    width: 150px;
   }
   .section-header {
     flex-direction: column;
@@ -1543,7 +1787,9 @@ body.show .moving-text {
     width: 100%;
   }
   .filter-buttons {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
   }
   .filter-btn {
     padding: 0.3rem 0.8rem;

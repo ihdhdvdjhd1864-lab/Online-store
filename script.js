@@ -124,6 +124,7 @@ let detailsPrice = document.querySelector(".details-price");
 let detailsDescription = document.querySelector(".details-description");
 let closeDetails = document.querySelector(".close-details");
 let detailsAdd = document.querySelector(".details-add");
+let detailsFavorite = document.querySelector(".details-favorite");
 function renderProducts(products) {
   cards.innerHTML = products
     .map(
@@ -174,6 +175,7 @@ function renderProducts(products) {
       detailsPrice.textContent = `$${product.price.toFixed(2)}`;
       detailsDescription.textContent = product.description;
       detailsAdd.dataset.id = product.id;
+      detailsFavorite.dataset.id = product.id;
       productDetails.classList.add("show-details");
       overlay.classList.add("overlay-active");
     });
@@ -257,6 +259,7 @@ function addToFavorites(id) {
   if (!existingProduct) {
     favorites.push(product);
   }
+
   localStorage.setItem("favorites", JSON.stringify(favorites));
   renderFavorites();
   updateFavoritesCount();
@@ -278,10 +281,16 @@ closeDetails.addEventListener("click", () => {
 detailsAdd.addEventListener("click", () => {
   let id = detailsAdd.dataset.id;
   addToCart(id);
-
   productDetails.classList.remove("show-details");
   overlay.classList.remove("overlay-active");
   showToast();
+});
+detailsFavorite.addEventListener("click", () => {
+  let id = detailsFavorite.dataset.id;
+  addToFavorites(id);
+  productDetails.classList.remove("show-details");
+  overlay.classList.remove("overlay-active");
+  showToast2();
 });
 
 let favoritesBtn = document.querySelector(".favorites-btn");
@@ -435,6 +444,7 @@ function updateCartTotal() {
   totalElement.textContent = `Total: $${total.toFixed(2)}`;
 }
 let checkoutBtn = document.querySelector(".checkout-btn");
+
 checkoutBtn.addEventListener("click", () => {
   if (cart.length === 0) {
     cartItems.innerHTML = `
@@ -446,39 +456,20 @@ checkoutBtn.addEventListener("click", () => {
     let cartItemSuccess = document.querySelector(".cart-item-success");
     setTimeout(() => {
       cartItemSuccess.style.display = "none";
-      cartItems.innerHTML = `<p class="cart-empty">Your cart is currently empty</p>`;
+      cartItems.innerHTML = `
+        <p class="cart-empty">Your cart is currently empty</p>
+      `;
     }, 2000);
     return;
   }
-
-  let finalTotal = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
-  );
-  cart = [];
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCount();
-  updateCartTotal();
-  // 4. عرض الرسالة بالمتغير الجديد finalTotal
-  cartItems.innerHTML = `
-    <div class="cart-item-success" >
-      <i class="fa-solid fa-circle-check"></i>
-      <h3>Order placed successfully!</h3>
-      <p>Total Paid: <strong>$${finalTotal.toFixed(2)}</strong></p>
-    </div>
-  `;
-  let cartItemSuccess = document.querySelector(".cart-item-success");
-  setTimeout(() => {
-    cartItemSuccess.style.display = "none";
-    cartItems.innerHTML = `<p class="cart-empty">Your cart is currently empty</p>`;
-  }, 2000);
+  window.location.href = "form.html";
 });
 // ################################################################################
 // ################################################################################
 // ################################################################################
 // جلب البيانات
 async function getFetch() {
-  let response = await fetch("dade_600_products.json");
+  let response = await fetch("products.json");
   data = await response.json();
   renderProducts(data);
 }
@@ -498,7 +489,10 @@ searchInput.addEventListener(
   searchNew(() => {
     let searchInputValue = searchInput.value.toLowerCase();
     let filteredData = data.filter((product) => {
-      return product.title.toLowerCase().includes(searchInputValue);
+      return (
+        product.title.toLowerCase().includes(searchInputValue) ||
+        product.Nu.toLowerCase().includes(searchInputValue)
+      );
     });
     if (filteredData.length === 0) {
       cards.innerHTML = `<p class="no-results">No products found</p>`;
@@ -524,3 +518,12 @@ filterButtons.forEach((button) => {
     renderProducts(filteredData);
   });
 });
+
+
+
+
+
+
+
+
+
