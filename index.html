@@ -27,33 +27,17 @@
       name="twitter:image"
       content="https://online-store-teal-chi.vercel.app/img/logo-navbar.png"
     />
-<title>PRIME MARKET</title>
-
-<link
-  rel="icon"
-  type="image/png"
-  sizes="32x32"
-  href="/img/logo-navbar.png?v=2"
-/>
-
-<link
-  rel="icon"
-  type="image/png"
-  sizes="192x192"
-  href="/img/logo-navbar.png?v=2"
-/>
-
-<link
-  href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap"
-  rel="stylesheet"
-/>
-
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-/>
-
-<link rel="stylesheet" href="style.css" />
+    <title>PRIME MARKET</title>
+    <link rel="icon" href="img/logo-navbar.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- Loader -->
@@ -61,7 +45,9 @@
       <div class="loader-content">
         <img src="img/logo-leadr.png" class="loader-logo" />
         <h2>PRIME<span>MARKET</span></h2>
-        <div class="spinner"></div>
+        <div class="spinner">
+          <div class="double-spinner"></div>
+        </div>
         <p>.....جاري تحميل البيانات</p>
       </div>
     </div>
@@ -69,7 +55,6 @@
     <!-- محتوي الصفحة -->
     <div class="dashbard">
       <!-- القائمة -->
-
       <nav>
         <div class="logo">
           <img src="img/logo-navbar.png" alt="" />
@@ -90,10 +75,17 @@
           <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#products">profucts</a></li>
-            <li><a href="#">categories</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#categories">categories</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+            <li class="mobile-orders">
+              <a href="orders.html" class="orders-btn">
+                <i class="fa-solid fa-box"></i>
+                <span>My Orders</span>
+                <span class="orders-count">0</span>
+              </a>
+            </li>
             <li>
               <button class="modal"></button>
             </li>
@@ -149,7 +141,7 @@
           <div class="section-header">
             <h2>FEATURED CATEGORIES</h2>
             <input type="text" id="searchInput" placeholder="Search items..." />
-            <div class="filter-buttons">
+            <div class="filter-buttons" id="categories">
               <button class="filter-btn active" data-category="all">
                 <i class="fa-solid fa-border-all"></i> الكل
               </button>

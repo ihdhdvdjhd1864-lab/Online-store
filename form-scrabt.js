@@ -6,8 +6,8 @@ let orderItems = document.querySelector("#orderItems");
 let orderTotal = document.querySelector("#orderTotal");
 let closeCheckout = document.querySelector(".close-checkout");
 closeCheckout.addEventListener("click", () => {
-    window.location.href = "index.html";
-})
+  window.location.href = "index.html";
+});
 let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
 let total = cart.reduce((sum, item) => {
@@ -24,9 +24,15 @@ checkoutForm.addEventListener("submit", (e) => {
   let city = document.querySelector("#customerCity").value;
   let address = document.querySelector("#customerAddress").value;
   let notes = document.querySelector("#customerNotes").value;
+  const phoneRegex = /^01[0125]\d{8}$/;
 
+  if (!phoneRegex.test(phone)) {
+    alert("برجاء إدخال رقم هاتف مصري صحيح مكون من 11 رقم (مثال: 01012345678)");
+    document.querySelector("#customerPhone").focus();
+    return; 
+  }
   let order = {
-    id: new Date(),
+    id: `ORD-${Date.now()}`,
     customer: {
       name: name,
       phone: phone,

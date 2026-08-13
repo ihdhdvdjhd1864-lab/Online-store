@@ -18,6 +18,12 @@ window.addEventListener("DOMContentLoaded", () => {
     // Dark Mode
     loader.style.backgroundColor = "#0f172a";
   }
+  if (sessionStorage.getItem("loaderShown") === "true") {
+    loader.classList.add("hide");
+    return;
+  }
+  sessionStorage.setItem("loaderShown", "true");
+
   setTimeout(() => {
     loader.classList.add("hide");
   }, 3000);
@@ -491,7 +497,7 @@ searchInput.addEventListener(
     let filteredData = data.filter((product) => {
       return (
         product.title.toLowerCase().includes(searchInputValue) ||
-        product.Nu.toLowerCase().includes(searchInputValue)
+        product.price.toString().includes(searchInputValue)
       );
     });
     if (filteredData.length === 0) {
@@ -518,12 +524,6 @@ filterButtons.forEach((button) => {
     renderProducts(filteredData);
   });
 });
-
-
-
-
-
-
-
-
-
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+let ordersCount = document.querySelector(".orders-count");
+ordersCount.textContent = orders.length;
