@@ -377,30 +377,8 @@ grid-template-columns: repeat(1fr);
    View Details Button
 ================================ */
 
-.view-order-btn {
-  border: 0;
-  outline: none;
 
-  padding: 11px 18px;
 
-  border-radius: 10px;
-
-  background: var(--primary);
-  color: #111827;
-
-  font-size: 14px;
-  font-weight: 700;
-
-  cursor: pointer;
-
-  transition: var(--transition);
-}
-
-.view-order-btn:hover {
-  background: var(--primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(255, 153, 0, 0.18);
-}
 
 /* ================================
    Empty Orders
@@ -518,9 +496,7 @@ grid-template-columns: repeat(1fr);
     flex-direction: column;
   }
 
-  .view-order-btn {
-    width: 100%;
-  }
+
 }
 
 @media (max-width: 400px) {

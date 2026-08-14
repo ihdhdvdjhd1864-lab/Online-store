@@ -101,9 +101,6 @@ function renderOrders() {
               </span>
             </div>
 
-            <button class="view-order-btn" data-id="${order.id}">
-               View Details
-            </button>
           </div>
 
         </div>
