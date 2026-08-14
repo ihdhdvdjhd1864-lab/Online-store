@@ -23,7 +23,6 @@ function renderOrders() {
     .map((order) => {
       return `
         <div class="order-card">
-
           <div class="order-top">
             <div class="order-id-box">
               <span class="order-label">Order ID</span>
@@ -31,7 +30,7 @@ function renderOrders() {
               <span class="order-date">${formatDate(order.date)}</span>
             </div>
 
-            <span class="order-status">Pending</span>
+            <span class="order-status">Order Status: Completed</span>
           </div>
 
           <div class="customer-info">
