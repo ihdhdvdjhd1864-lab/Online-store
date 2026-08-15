@@ -204,10 +204,10 @@ grid-template-columns: repeat(1fr);
 
   border-radius: 999px;
 
-  background: rgba(255, 153, 0, 0.1);
-  border: 1px solid rgba(255, 153, 0, 0.2);
+  background: rgba(4, 255, 0, 0.23);
+  border: 1px solid rgba(3, 184, 0, 0.314);
 
-  color: var(--primary);
+  color: white;
 
   font-size: 13px;
   font-weight: 700;
@@ -219,9 +219,9 @@ grid-template-columns: repeat(1fr);
   height: 7px;
 
   border-radius: 50%;
-  background: var(--primary);
+  background: rgba(4, 255, 0, 0.531);
 
-  box-shadow: 0 0 8px rgba(255, 153, 0, 0.6);
+  box-shadow: 0 0 8px rgba(4, 255, 0, 0.531);
 }
 
 /* ================================

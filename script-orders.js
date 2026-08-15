@@ -41,7 +41,10 @@ function renderOrders() {
                 Name:
                 <strong>${order.customer.name}</strong>
               </p>
-
+              <p>
+                email:
+                <strong>${order.customer.email}</strong>
+              </p>
               <p>
                 Phone:
                 <strong>${order.customer.phone}</strong>
@@ -115,8 +118,4 @@ function renderOrders() {
   }
 }
 
-
-
 renderOrders();
-
-

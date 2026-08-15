@@ -367,7 +367,6 @@ closeCart.addEventListener("click", () => {
   cartBox.classList.remove("show-cart");
   overlay.classList.remove("overlay-active");
 });
-
 // عرض منتجات السلة
 function renderCart() {
   if (cart.length === 0) {
@@ -459,13 +458,7 @@ checkoutBtn.addEventListener("click", () => {
         <h3>Your cart is empty!</h3>
       </div>
     `;
-    let cartItemSuccess = document.querySelector(".cart-item-success");
-    setTimeout(() => {
-      cartItemSuccess.style.display = "none";
-      cartItems.innerHTML = `
-        <p class="cart-empty">Your cart is currently empty</p>
-      `;
-    }, 2000);
+
     return;
   }
   window.location.href = "form.html";

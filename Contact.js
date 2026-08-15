@@ -3,7 +3,6 @@ const formMessage = document.querySelector("#formMessage");
 
 contactForm.addEventListener("submit", (e) => {
   e.preventDefault();
-
     formMessage.textContent = "Your message has been sent successfully!";
 setTimeout(() => {
   formMessage.textContent = "";
