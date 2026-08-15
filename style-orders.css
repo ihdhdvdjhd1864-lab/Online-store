@@ -42,6 +42,10 @@ body {
 ================================ */
 
 .orders-header {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 90%;
   max-width: 1200px;
   margin: auto;
@@ -59,7 +63,6 @@ body {
 
   transition: var(--transition);
 }
-
 
 .back-home:hover {
   color: var(--primary);
@@ -90,6 +93,51 @@ body {
   padding-bottom: 70px;
 }
 
+.clear-orders-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 12px 18px;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  border-radius: 10px;
+
+  background: rgba(239, 68, 68, 0.08);
+  color: var(--accent-red);
+
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.clear-orders-btn i {
+  font-size: 15px;
+  transition: transform 0.25s ease;
+}
+
+.clear-orders-btn:hover {
+  background: var(--accent-red);
+  color: var(--text-main);
+  border-color: var(--accent-red);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.2);
+}
+
+.clear-orders-btn:hover i {
+  transform: scale(1.1) rotate(-8deg);
+}
+
+.clear-orders-btn:active {
+  transform: translateY(0);
+}
+
+.clear-orders-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
 /* ================================
    Heading
 ================================ */
@@ -125,10 +173,9 @@ body {
 ================================ */
 
 .orders-list {
-display: grid;
-grid-template-columns: repeat(1fr);
+  display: grid;
+  grid-template-columns: repeat(1fr);
   gap: 22px;
- 
 }
 
 /* ================================
@@ -377,9 +424,6 @@ grid-template-columns: repeat(1fr);
    View Details Button
 ================================ */
 
-
-
-
 /* ================================
    Empty Orders
 ================================ */
@@ -495,8 +539,6 @@ grid-template-columns: repeat(1fr);
     align-items: flex-start;
     flex-direction: column;
   }
-
-
 }
 
 @media (max-width: 400px) {

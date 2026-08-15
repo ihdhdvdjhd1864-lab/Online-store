@@ -119,3 +119,10 @@ function renderOrders() {
 }
 
 renderOrders();
+
+let clearOrdersBtn = document.querySelector("#clearOrdersBtn");
+clearOrdersBtn.addEventListener("click", () => {
+  localStorage.removeItem("orders");
+  orders = [];
+  renderOrders();
+})
