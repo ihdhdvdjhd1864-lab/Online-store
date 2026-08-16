@@ -983,10 +983,9 @@ body.show .cart-item h3 {
 .double-spinner {
   width: 0%;
   height: 6px;
- 
   background: var(--primary-hover);
   border-radius: 20px;
-  animation: spin 3s ease-in-out;
+  animation: spin 3s ease-in-out ;
 }
 /* Animate Spinner */
 @keyframes spin {
@@ -1710,6 +1709,9 @@ body.show .moving-text {
   border: 1px solid var(--border-color);
   border-radius: 7px;
   transition: var(--transition);
+}
+body.show .orders-btn {
+ border: #64748b solid 1px;
 }
 
 .orders-btn i {

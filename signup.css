@@ -1,0 +1,188 @@
+:root {
+  --primary: #ff9900; /* لون أمزون المميز */
+  --primary-hover: #e68a00;
+  --bg-dark: #0f172a; /* خلفية داكنة فخمة */
+  --card-bg: #1e293b; /* خلفية الكروت */
+  --text-main: #f8fafc; /* لون النصوص الرئيسية */
+  --text-muted: #94a3b8; /* لون النصوص الفرعية */
+  --accent-red: #ef4444; /* لون الخصومات والتنبيهات */
+  --border-color: rgba(255, 255, 255, 0.08);
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg:
+    0 20px 25px -5px rgba(0, 0, 0, 0.274), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset وتنسيقات عامة */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* الحاوية الرئيسية للصفحة */
+.auth-page {
+  width: 100%;
+  max-width: 650px;
+  padding: 20px;
+}
+
+/* كارت تسجيل الدخول / إنشاء الحساب */
+.auth-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(10px);
+}
+
+body.show .auth-card {
+  background-color: rgb(255, 255, 255);
+  
+}
+body.show .auth-card h1,
+body.show .auth-card #signColor {
+  color: var(--card-bg);
+}
+body.show .auth-card a {
+  color: var(--card-bg);
+}
+#Create{
+  color: var(--card-bg);
+  text-decoration: none;
+}
+
+/* رأس الكارت */
+.auth-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.auth-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.auth-header p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* حقول الإدخال */
+.input-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  outline: none;
+  transition: var(--transition);
+}
+
+.input-group input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* تأثير التحديد عند التركيز على الحقل */
+.input-group input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.2);
+  background-color: rgba(15, 23, 42, 0.8);
+}
+
+/* رسائل الخطأ والتنبيهات */
+.form-message {
+  font-size: 0.85rem;
+  color: var(--accent-red);
+  margin-bottom: 16px;
+  min-height: 20px;
+  text-align: center;
+}
+
+/* زر الإرسال */
+.auth-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--primary);
+  color: #000; /* نص داكن لوضوح عالي فوق البرتقالي */
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.auth-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.auth-btn:active {
+  transform: translateY(0);
+}
+
+/* الفوتر أسفل الكارت */
+.auth-footer {
+  margin-top: 24px;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+}
+
+.auth-footer p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.auth-footer a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 5px;
+  transition: var(--transition);
+}
+
+.auth-footer a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+.auth-logo{
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  display: block;
+}
+.show{
+background-color: #f1f5f9;
+}

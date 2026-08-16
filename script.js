@@ -1,7 +1,7 @@
 // loader
 let loader = document.querySelector("#loader");
-let loaderLogo = document.querySelector(".loader-logo");
 let loaderContent = document.querySelector(".loader-content");
+let loaderLogo = document.querySelector(".loader-logo");
 let spinner = document.querySelector(".spinner");
 let spinnerP = document.querySelector("#loader p");
 window.addEventListener("DOMContentLoaded", () => {
@@ -11,8 +11,6 @@ window.addEventListener("DOMContentLoaded", () => {
     loader.style.backgroundColor = "white";
     loaderLogo.style.filter = "invert(0)";
     loaderContent.style.color = "#0f172a";
-    spinner.style.border = " 4px solid #e68a0042";
-    spinner.style.borderTop = "4px solid #0f172a";
     spinnerP.style.color = "#0f172ac9";
   } else {
     // Dark Mode

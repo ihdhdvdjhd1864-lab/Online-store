@@ -68,7 +68,7 @@ checkoutForm.addEventListener("submit", (e) => {
   };
 
   // ================= EMAILJS =================
-
+  // بيانات الطلب الي EmailJS
   let templateParams = {
     order_id: order.id,
     email: email,
@@ -91,13 +91,15 @@ checkoutForm.addEventListener("submit", (e) => {
     },
   };
 
+  // 1. إيميل التأكيد للعميل
+  emailjs.send("service_kncr879", "template_qrmdlk4", templateParams);
+
+  // 2. إشعار الأدمن الفوري لك
   emailjs
-    .send("service_kncr879", "template_qrmdlk4", templateParams)
+    .send("service_kncr879", "template_y75ix0m", templateParams)
 
     // ================= لو الإيميل نجح =================
     .then(() => {
-      console.log("Email sent successfully!");
-
       // حفظ الطلب
       orders.push(order);
       localStorage.setItem("orders", JSON.stringify(orders));
@@ -128,8 +130,6 @@ checkoutForm.addEventListener("submit", (e) => {
 
     // ================= لو الإيميل فشل =================
     .catch((error) => {
-      console.error("Email failed:", error);
-
       alert("Something went wrong while sending your order. Please try again.");
     });
 });
